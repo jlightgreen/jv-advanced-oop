@@ -1,20 +1,34 @@
 package core.basesyntax;
 
 public class Main {
+    private static int NUMBER_OF_SHAPES = 4;
+    private static int MAX_LENGTH = 100;
+    private static int NUMBER_OF_FIGURES = 20;
+
     public static void main(String[] args) {
-        Figure[] figures = new Figure[(randomNumber(1, 100))];
+        Figure[] figures = new Figure[NUMBER_OF_FIGURES];
         for (int i = 0; i < figures.length; i++) {
-            int randomShape = randomNumber(1, 4);
-            if (randomShape == 1) {
-                figures[i] = new Triangle(randomNumber(10, 100), getRandomColor());
-            }
-            if (randomShape == 2) {
-                figures[i] = new Circle(randomNumber(1, 100), getRandomColor());
-            }
-            if (randomShape == 3) {
-                figures[i] = new Trapezoid(randomNumber(1, 100), getRandomColor());
-            } else {
-                figures[i] = new Square(randomNumber(1, 100), getRandomColor());
+            int randomShape = randomNumber(NUMBER_OF_SHAPES);
+            switch (randomShape) {
+                case 1:
+                    figures[i] = new Triangle(randomNumber(MAX_LENGTH),
+                            randomNumber(MAX_LENGTH),
+                            randomNumber(MAX_LENGTH),
+                            getRandomColor());
+                    break;
+                case 2:
+                    figures[i] = new Circle(randomNumber(MAX_LENGTH),
+                            getRandomColor());
+                    break;
+                case 3:
+                    figures[i] = new Trapezoid(randomNumber(MAX_LENGTH),
+                            randomNumber(MAX_LENGTH),
+                            getRandomColor());
+                    break;
+                default:
+                    figures[i] = new Square(randomNumber(MAX_LENGTH),
+                            getRandomColor());
+                    break;
             }
         }
 
@@ -24,7 +38,7 @@ public class Main {
     }
 
     public static Color getRandomColor() {
-        int randomNumber = randomNumber(1, 3);
+        int randomNumber = randomNumber(3);
         if (randomNumber == 1) {
             return Color.RED;
         }
@@ -35,8 +49,8 @@ public class Main {
         }
     }
 
-    public static int randomNumber(int min, int max) {
-        max -= min;
-        return (int) (Math.random() * ++max) + min;
+    public static int randomNumber(int max) {
+        return (int) (Math.random() * max + 1);
     }
+
 }

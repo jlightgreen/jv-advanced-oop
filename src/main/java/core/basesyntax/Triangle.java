@@ -1,19 +1,32 @@
 package core.basesyntax;
 
 public class Triangle extends Figure {
-    private double base;
+    private int firstSide;
+    private int secondSide;
+    private int thirdSide;
 
-    public Triangle(int area, Color color) {
-        super(area, color);
+    public Triangle(int firstSide, int secondSide, int thirdSide, Color color) {
+        super(color);
+        this.firstSide = firstSide;
+        this.secondSide = secondSide;
+        this.thirdSide = thirdSide;
     }
 
+    @Override
     public void draw() {
         System.out.println("Figure - triangle, area - " + getArea()
-                + ", height length - " + getHeight()
+                + ", perimeter length - " + getPerimeter()
                 + ", color - " + getColor());
     }
 
-    public int getHeight() {
-        return (int) Math.round(getArea() / ((Math.random() * (getArea() + 1)) + 1));
+    @Override
+    public int getArea() {
+        double halfPerimeter = (double) getPerimeter() / 2;
+        return (int) Math.sqrt(halfPerimeter * (halfPerimeter - firstSide)
+                * halfPerimeter - secondSide * halfPerimeter - thirdSide);
+    }
+
+    public int getPerimeter() {
+        return firstSide + secondSide + thirdSide;
     }
 }
