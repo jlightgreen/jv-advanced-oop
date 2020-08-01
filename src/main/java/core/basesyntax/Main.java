@@ -1,9 +1,9 @@
 package core.basesyntax;
 
 public class Main {
-    private static int NUMBER_OF_SHAPES = 4;
-    private static int MAX_LENGTH = 100;
-    private static int NUMBER_OF_FIGURES = 20;
+    private static final int NUMBER_OF_SHAPES = 4;
+    private static final int MAX_LENGTH = 100;
+    private static final int NUMBER_OF_FIGURES = 20;
 
     public static void main(String[] args) {
         Figure[] figures = new Figure[NUMBER_OF_FIGURES];
